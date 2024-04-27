@@ -1,0 +1,46 @@
+{% extends 'partials/base-admin.html' %}
+{% load static %}
+
+{% block content %}
+
+
+        <div class="content">
+          <!-- Main content -->
+          <div class="container">
+              <h1>Delete Confirmation</h1>
+              <p>Are you sure you want to delete "{{ project.caption }}"?</p>
+              <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <button class="btn btn-warning" type="submit" name="confirm_delete">Yes, Delete</button>
+                  <a href="{% url 'PORTFOLIO:user' %}" type="button" class="btn btn-primary">Cancel</a>
+              </form>
+          </div>
+      </div>
+      
+      </div>  
+
+{% endblock %}
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

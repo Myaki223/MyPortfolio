@@ -1,0 +1,72 @@
+{% extends 'partials/base-admin.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row">
+  {% for category in categories %}
+  <div class="col-md-4 mb-4">
+    <div class="card card-prj-design hvr-shrink">
+      <img src="{{ category.image.url }}" class="card-img-top" alt="Project 1" style="height: 450px;">
+      <div class="card-body">
+        <h5 class="card-title">{{ category.title }}</h5>
+        <p class="card-text">{{ category.description }}</p>
+        <a class="btn btn-primary btn-full" data-bs-toggle="modal" data-bs-target="#MOD{{ category.cid }}">View Project</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% for category in categories %}
+<div class="modal fade" id="MOD{{ category.cid }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" >
+    <div class="modal-content modal-design">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 " id="exampleModalLabel">{{ category.title }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+
+      <div class="container text-center">
+        <div class="row row-cols-3">
+          {% for graphic_design in category.graphicdesign_set.all %}
+          <div class="modal-body">
+            <div class="mb-4">
+              <div class="card card-design hvr-float">
+                <img src="{{ graphic_design.image.url }}" class="card-img-top" alt="" style="height: 425px; object-fit: cover;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ graphic_design.caption }}</h5>
+                  <a href="{% url 'PORTFOLIO:updateproject' graphic_design.id %}" type="button" class="btn btn-primary">
+                    <i class="bi bi-pencil-fill"></i> Edit
+                </a>
+                <a href="{% url 'PORTFOLIO:deleteproject' graphic_design.id %}" type="button" class="btn btn-danger">
+                    Delete Project
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+  {% endfor %}
+          
+  
+{% endblock content%}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+{% extends 'partials/base-admin.html' %}
+{% load static %}
+
+{% block content %}
+
+
+        <div class="content">
+          <!-- Main content -->
+          <div class="container">
+              <h1>Update Project: {{ image.caption }}</h1>
+              <img src="{{ image.image.url }}" class="card-img-top" alt="" style="width: 325px; height: 425px; object-fit: cover;">
+              <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit" class="btn btn-lg btn-success">Submit</button>
+              </form>
+          </div>
+      </div>
+      
+      </div>
+      
+  
+
+
+
+
+
+{% endblock %}
